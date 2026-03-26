@@ -1,11 +1,6 @@
 """Tests for fundamental analysis module."""
 
-import sys
-import os
-
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
-from src.magicglass.analysis.fundamental import (
+from magicglass.analysis.fundamental import (
     FundamentalResult,
     analyse_fundamentals,
     score_debt_to_equity,

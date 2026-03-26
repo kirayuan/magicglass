@@ -7,15 +7,13 @@ or bearish (→0) conditions.
 
 from __future__ import annotations
 
-import sys
 from dataclasses import dataclass, field
 from typing import Dict
 
 import numpy as np
 import pandas as pd
 
-sys.path.insert(0, ".")
-from config.stocks import (
+from magicglass.config import (
     LONG_MA_WINDOW,
     MACD_FAST,
     MACD_SIGNAL,

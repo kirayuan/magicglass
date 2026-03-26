@@ -1,11 +1,6 @@
 """Tests for sentiment analysis module."""
 
-import sys
-import os
-
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
-from src.magicglass.analysis.sentiment import (
+from magicglass.analysis.sentiment import (
     SentimentResult,
     analyse_headlines,
     analyse_stock_sentiment,

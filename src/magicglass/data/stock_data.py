@@ -6,15 +6,16 @@ for the configured AI stock tickers using the yfinance library.
 
 from __future__ import annotations
 
-import sys
+import logging
 from datetime import datetime, timedelta
 from typing import Dict, Optional
 
 import pandas as pd
 import yfinance as yf
 
-sys.path.insert(0, ".")
-from config.stocks import AI_STOCKS, LOOKBACK_DAYS
+from magicglass.config import AI_STOCKS, LOOKBACK_DAYS
+
+logger = logging.getLogger(__name__)
 
 
 def fetch_stock_history(
@@ -39,6 +40,7 @@ def fetch_stock_history(
             return pd.DataFrame()
         return df[["Open", "High", "Low", "Close", "Volume"]]
     except Exception:
+        logger.warning("Failed to fetch history for %s", ticker)
         return pd.DataFrame()
 
 
@@ -77,4 +79,5 @@ def fetch_stock_info(ticker: str) -> dict:
         stock = yf.Ticker(ticker)
         return stock.info
     except Exception:
+        logger.warning("Failed to fetch info for %s", ticker)
         return {}

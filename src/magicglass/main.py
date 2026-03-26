@@ -6,16 +6,12 @@ and outputs a prediction report for each configured AI stock.
 
 from __future__ import annotations
 
-import sys
-
-sys.path.insert(0, ".")
-
-from config.stocks import AI_STOCKS
-from src.magicglass.analysis.fundamental import analyse_fundamentals
-from src.magicglass.analysis.market import analyse_market
-from src.magicglass.analysis.sentiment import analyse_stock_sentiment
-from src.magicglass.data.stock_data import fetch_all_stocks, fetch_stock_info
-from src.magicglass.prediction.predictor import PredictionResult, make_prediction
+from magicglass.config import AI_STOCKS
+from magicglass.analysis.fundamental import analyse_fundamentals
+from magicglass.analysis.market import analyse_market
+from magicglass.analysis.sentiment import analyse_stock_sentiment
+from magicglass.data.stock_data import fetch_all_stocks, fetch_stock_info
+from magicglass.prediction.predictor import PredictionResult, make_prediction
 
 
 # ---------------------------------------------------------------------------
@@ -116,7 +112,7 @@ def run_analysis() -> list[PredictionResult]:
         if df is not None and not df.empty:
             market_result = analyse_market(ticker, df)
         else:
-            from src.magicglass.analysis.market import MarketResult
+            from magicglass.analysis.market import MarketResult
             market_result = MarketResult(ticker=ticker, summary="No price data available")
 
         # 5. Prediction

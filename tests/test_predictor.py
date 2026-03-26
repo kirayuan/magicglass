@@ -1,11 +1,6 @@
 """Tests for prediction module."""
 
-import sys
-import os
-
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
-from src.magicglass.prediction.predictor import (
+from magicglass.prediction.predictor import (
     PredictionResult,
     combine_scores,
     make_prediction,
